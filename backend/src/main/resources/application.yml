@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: qualityboard-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/qualityboard}
+    username: ${DATABASE_USER:qualityboard}
+    password: ${DATABASE_PASSWORD:qualityboard}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: qualityboard
+      POSTGRES_USER: qualityboard
+      POSTGRES_PASSWORD: qualityboard
+    ports:
+      - "5432:5432"
+    volumes:
+      - qualityboard-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U qualityboard -d qualityboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  qualityboard-data:
